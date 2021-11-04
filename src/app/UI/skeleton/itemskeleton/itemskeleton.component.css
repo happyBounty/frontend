@@ -1,0 +1,10 @@
+.collectionItem {border:1px solid #e7e7e7; margin:0 0 25px;}
+.collectionItemImg {position: relative; height: 240px;}
+.collectionItemTitle {text-align: left; margin: 15px 15px 0;}
+.collectionItemCount {text-align: left; margin: 0 15px 15px;}
+@media screen and (max-width: 1200px) {
+    .collectionItemImg {height: 200px;}
+}
+@media screen and (max-width: 992px) {
+    .collectionItemImg {height: 160px;}
+}

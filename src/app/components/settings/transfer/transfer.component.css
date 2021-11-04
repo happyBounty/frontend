@@ -1,0 +1,12 @@
+.userForm {position: relative;}
+.pop_close {position: absolute; right:0; top:5px; cursor: pointer; font-size: 20px;}
+@media screen and (min-width: 992px) {
+    .userForm {width:450px;}
+}
+@media screen and (max-width: 992px) {
+    .userForm {width: 400px;}
+}
+@media screen and (max-width: 768px) {
+
+    .userForm {width: 300px;}
+}

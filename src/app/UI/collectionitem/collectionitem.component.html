@@ -1,0 +1,18 @@
+
+<div class="collectionItem" (click)="collectionAction()">
+    <div class="collectionItemImg">
+        <img [src]="mediaBase + '/images/collection/banner/' + collection.banner" class="collectionItemImgBanner"/>
+            <div class="collectionItemAuthor">
+                <div class="collectionItemAuthorInner">
+                    <img [src]="mediaBase + '/images/collection/logo/' + collection.image" />
+                </div>
+            </div>
+    </div>
+
+    <div class="collectionItemTitle">
+        {{collection.name}}
+    </div>
+    <div class="collectionItemCount">
+        {{collection.item_count}} Items
+    </div>
+</div>

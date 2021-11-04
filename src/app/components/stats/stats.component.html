@@ -1,0 +1,67 @@
+
+
+    <div class="collectionMainContainer">
+        <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="tradeBlock">
+              <div class="animated fadeIn">
+                  <div class="card">
+                    <div class="card-header">
+                      <i class="cil-swap-vertical titleIcon"></i>
+                       Activity
+                    </div>
+                    <div class="card-body historyBody">
+                         <table class="table table-bordered table-striped table-sm">
+                          <thead>
+                            <tr>
+                              <th>Collection</th>
+                              <th>Item</th>
+                              <th>Event</th>
+                              <th>Price</th>
+                              <th>From</th>
+                              <th>To</th>
+                              <th>Transaction Hash</th>
+                              <th>Created Date</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of histories">
+                              <td><div *ngIf="item.collection_id != null"><div class="itemDetail" [routerLink]="'/collection/detail/' + item.collection_id._id"><img [src]="mediaBase + '/images/collection/logo/' + item.collection_id.image"></div></div></td>
+                              <td><div class="itemDetail" [routerLink]="'/item/view/' + item.item_id._id"><img [src]="mediaBase + '/images/item/thumb/' + item.item_id.thumb"></div></td>
+                              <td>{{item.history_type}}</td>
+                              <td>{{item.price}} ETH</td>
+                              <td><div *ngIf="item.from_id != null"><a href="javascript:void(0)" [routerLink]="'/profile/' + item.from_id._id">{{item.from_id.first_name}} {{item.from_id.last_name}}</a></div></td>
+                              <td><div *ngIf="item.to_id != null"><a href="javascript:void(0)" [routerLink]="'/profile/' + item.to_id._id">{{item.to_id.first_name}} {{item.to_id.last_name}}</a></div></td>
+                              <td><div *ngIf="item.transaction_hash != ''"><a [href]="blockChainExplorer + 'tx/'+item.transaction_hash" target="_blank">{{item.transaction_hash}}</a></div></td>
+                              <td>{{item.created_date | amDateFormat:'LL'}}</td>
+                            </tr>
+                            <tr *ngIf="histories.length==0 && historyLoading == false">
+                                <td colspan="8">
+                                  <alert type="info" ng-reflect-type="info">
+                                    <div role="alert" class="alert alert-info" ng-reflect-ng-class="">
+                                     <strong>Oops!</strong> No Data Found
+                                    </div>
+                                  </alert>
+                                </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <nav>
+                          <ul class="pagination" *ngIf="!historyLoading">
+                            <li class="page-item" *ngIf="pageHistory!=1"><a class="page-link" href="javascript:void(0)" (click)="prevHistoryPage()">Prev</a></li>
+                            <li class="page-item" *ngIf="hasNextHistoryPage"><a class="page-link" href="javascript:void(0)" (click)="nextHistoryPage()">Next</a></li>
+                          </ul>
+                          <ul class="pagination" *ngIf="historyLoading">
+                            <li class="page-item"><a class="page-link" href="javascript:void(0)">Loading...</a></li>
+                          </ul>
+                        </nav>
+                    </div>
+                  </div>
+                </div>
+          </div>
+      </div>
+  </div>
+  </div>
+</div>
+  

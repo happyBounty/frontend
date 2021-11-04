@@ -1,0 +1,467 @@
+<div class="appContainer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+              <div class="imgBlock" (click)="openImage()">
+                  <img [src]="mediaBase + '/images/item/thumb/' + item_thumb"  *ngIf="item_thumb!=''"/>
+              </div>
+              <div class="descBlock" *ngIf="itemInfo">
+                <div class="animated fadeIn">
+                    <div class="card">
+                      <div class="card-header">
+                        <i class="cil-justify-left titleIcon"></i>Description
+                        <div class="card-header-actions">
+                          <button class="btn" (click)="isDescCollapsed = !isDescCollapsed">
+                            <i class="icon-arrow-down" *ngIf="!isDescCollapsed"></i>
+                            <i class="icon-arrow-up" *ngIf="isDescCollapsed"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body"
+                           [collapse]="isDescCollapsed">
+                        <p>
+                          {{itemInfo.description}}
+                        </p>
+                        <p *ngIf="showMedia"><a [href]="mediaBase + '/images/item/media/' + itemInfo.media" target="_blank">View Media</a></p>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="propertyBlock" *ngIf="attributes.length>0">
+                <div class="animated fadeIn">
+                    <div class="card">
+                      <div class="card-header">
+                        <i class="cil-list-rich titleIcon"></i>
+                        Properties
+                        <div class="card-header-actions">
+                          <button class="btn" (click)="isPropertyCollapsed = !isPropertyCollapsed">
+                            <i class="icon-arrow-down" *ngIf="!isPropertyCollapsed"></i>
+                            <i class="icon-arrow-up" *ngIf="isPropertyCollapsed"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body"
+                           [collapse]="isPropertyCollapsed">
+                            <div class="row">
+                                <div class="col-sm-4" *ngFor="let item of attributes; let i=index;">
+                                    <div class="attributes_list">
+                                        <label>{{item.type}}</label>
+                                        <span>{{item.name}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="statBlock" *ngIf="stats.length>0">
+                <div class="animated fadeIn">
+                    <div class="card">
+                      <div class="card-header">
+                        <i class="cil-chart titleIcon"></i>
+                        Stats
+                        <div class="card-header-actions">
+                          <button class="btn" (click)="isStatCollapsed = !isStatCollapsed">
+                            <i class="icon-arrow-down" *ngIf="!isStatCollapsed"></i>
+                            <i class="icon-arrow-up" *ngIf="isStatCollapsed"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body"
+                           [collapse]="isStatCollapsed">
+                           <div class="row">
+                            <div class="col-sm-4" *ngFor="let item of stats; let i=index;">
+                                <div class="attributes_list">
+                                      <label>{{item.name}}</label>
+                                      <label>{{item.value}} of {{item.valueof}}</label>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="levelBlock" *ngIf="levels.length>0">
+                <div class="animated fadeIn">
+                    <div class="card">
+                      <div class="card-header">
+                        <i class="cil-star titleIcon"></i>
+                        Levels
+                        <div class="card-header-actions">
+                          <button class="btn" (click)="isLevelCollapsed = !isLevelCollapsed">
+                            <i class="icon-arrow-down" *ngIf="!isLevelCollapsed"></i>
+                            <i class="icon-arrow-up" *ngIf="isLevelCollapsed"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body"
+                           [collapse]="isLevelCollapsed">
+                           <div class="row">
+                            <div class="col-sm-12" *ngFor="let item of levels; let i=index;">
+                                <div class="attributes_list">
+                                      <label>{{item.name}} ({{item.value}}/{{item.valueof}})</label>
+                                      <div class="level_progress">
+                                          <div class="level_progress_value" [ngStyle]="{'width':(item.value/item.valueof) * 100 +'%'}"></div>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="levelBlock" *ngIf="itemInfo">
+                <div class="animated fadeIn">
+                    <div class="card">
+                      <div class="card-header">
+                        <i class="cil-factory titleIcon"></i>
+                        About Collection
+                        <div class="card-header-actions">
+                          <button class="btn" (click)="isCollectionCollapsed = !isCollectionCollapsed">
+                            <i class="icon-arrow-down" *ngIf="!isCollectionCollapsed"></i>
+                            <i class="icon-arrow-up" *ngIf="isCollectionCollapsed"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body"
+                           [collapse]="isCollectionCollapsed">
+                           <div class="collectionDetail" (click)="openCollection()">
+                               <div class="collectionDetailLeft">
+                                <img [src]="mediaBase + '/images/collection/logo/' + itemInfo.collection_id.image" />
+                               </div>
+                               <div class="collectionDetailRight">
+                                   <h4>{{itemInfo.collection_id.name}}</h4>
+                                   <p>{{itemInfo.collection_id.description}}</p>
+                               </div>
+                           </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="finalBlock" *ngIf="itemInfo">
+                <div class="animated fadeIn">
+                    <div class="card">
+                      <div class="card-header">
+                        <i class="cil-notes titleIcon"></i>
+                        Details
+                        <div class="card-header-actions">
+                          <button class="btn" (click)="isDetailCollapsed = !isDetailCollapsed">
+                            <i class="icon-arrow-down" *ngIf="!isDetailCollapsed"></i>
+                            <i class="icon-arrow-up" *ngIf="isDetailCollapsed"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body"
+                           [collapse]="isDetailCollapsed">
+                           <div class="infoItem">
+                               <label>Contract Address</label>
+                               <span><a [href]="blockChainExplorer + 'address/' + itemInfo.collection_id.contract_address" target="_blank">{{itemInfo.collection_id.contract_address.substring(0,4)}}...{{itemInfo.collection_id.contract_address.substring(itemInfo.collection_id.contract_address.length-4)}}</a></span>
+                               <div class="clear"></div>
+                           </div>
+                           <div class="infoItem">
+                                <label>Token</label>
+                                <span>{{token_id}}</span>
+                                <div class="clear"></div>
+                           </div>
+                           <div class="infoItem">
+                            <label>Blockchain</label>
+                            <span>{{blockChainName}}</span>
+                            <div class="clear"></div>
+                       </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+                <div class="infoBlock" *ngIf="itemInfo">
+                    <div class="infoTools">
+                        <button class="btn first" (click)="likeAction()">
+                          <i class="fa fa-heart-o" *ngIf="!is_liked"></i>
+                          <i class="fa fa-heart likedIcon" *ngIf="is_liked"></i>
+                        </button>
+                        <button class="btn" *ngIf="itemInfo.external_link.length>0" (click)="openExternalLink()"><i class="cil-external-link"></i></button>
+                        <button class="btn" *ngIf="!is_owner" (click)="reportModal.show()"><i class="cil-flag-alt"></i></button>
+                    </div>
+                   <div class="itemCategory">
+                        <a href="javascript:void(0)" (click)="viewByCategory()">{{itemInfo.category_id.title}}</a>
+                   </div>
+                   <h2>{{itemInfo.name}}</h2>
+                   <div class="infoBlockMore">
+                       <div class="infoBlockMoreItem">
+                           Owned by <a href="javascript:void" [routerLink]="'/profile/'+itemInfo.current_owner._id">{{itemInfo.current_owner.first_name}} {{itemInfo.current_owner.last_name}}</a>
+                        </div>
+                        <div class="infoBlockMoreItem">
+                           <i class="icon-eye"></i> {{itemInfo.view_count}} Views
+                         </div>
+                         <div class="clear"></div>
+                   </div>
+                   <div class="InfoPriceBlock" *ngIf="!is_owner">
+                       <p>Current Price </p>
+                       <h2>{{itemInfo.price}} ETH</h2>
+                       <button class="btn btn-primary" (click)="buyNFT()">Buy Now</button>
+                   </div>
+                </div>
+                <div class="priceBlock">
+                    <div class="animated fadeIn">
+                        <div class="card">
+                          <div class="card-header">
+                            <i class="cil-graph titleIcon"></i>
+                            Price History
+                            <div class="card-header-actions">
+                              <button class="btn" (click)="isPriceCollapsed = !isPriceCollapsed">
+                                <i class="icon-arrow-down" *ngIf="!isPriceCollapsed"></i>
+                                <i class="icon-arrow-up" *ngIf="isPriceCollapsed"></i>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="card-body"
+                               [collapse]="isPriceCollapsed">
+                               <table class="table table-bordered table-striped table-sm">
+                                <thead>
+                                  <tr>
+                                    <th>Price</th>
+                                    <th>User</th>
+                                    <th>Created Date</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of prices">
+                                    <td>{{item.price}}</td>
+                                    <td><div *ngIf="item.user_id != null"><a href="javascript:void(0)" [routerLink]="'/profile/' + item.user_id._id">{{item.user_id.first_name}} {{item.user_id.last_name}}</a></div></td>
+                                    <td>{{item.created_date | amDateFormat:'LL'}}</td>
+
+                                  </tr>
+                                  <tr *ngIf="prices.length==0 && priceLoading == false">
+                                      <td colspan="3">
+                                        <alert type="info" ng-reflect-type="info">
+                                          <div role="alert" class="alert alert-info" ng-reflect-ng-class="">
+                                           <strong>Oops!</strong> No Data Found
+                                          </div>
+                                        </alert>
+                                      </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <nav>
+                                <ul class="pagination" *ngIf="!priceLoading">
+                                  <li class="page-item" *ngIf="pagePrice!=1"><a class="page-link" href="javascript:void(0)" (click)="prevPricePage()">Prev</a></li>
+                                  <li class="page-item" *ngIf="hasNextPricePage"><a class="page-link" href="javascript:void(0)" (click)="nextPricePage()">Next</a></li>
+                                </ul>
+                              </nav>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="offerBlock">
+                    <div class="animated fadeIn">
+                        <div class="card">
+                          <div class="card-header">
+                            <i class="cil-money titleIcon"></i>
+                            Offers
+                            <div class="card-header-actions">
+                              <button class="btn" (click)="isOfferCollapsed = !isOfferCollapsed">
+                                <i class="icon-arrow-down" *ngIf="!isOfferCollapsed"></i>
+                                <i class="icon-arrow-up" *ngIf="isOfferCollapsed"></i>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="card-body"
+                               [collapse]="isOfferCollapsed">
+                               <table class="table table-bordered table-striped table-sm">
+                                <thead>
+                                  <tr>
+                                    <th>Sender</th>
+                                    <th>Price</th>
+                                    <th>Created Date</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of offers">
+                                    <td><div *ngIf="item.sender != null"><a href="javascript:void(0)" [routerLink]="'/profile/' + item.sender._id">{{item.sender.first_name}} {{item.sender.last_name}}</a></div></td>
+                                    <td>{{item.price}}</td>
+                                    <td>{{item.created_date | amDateFormat:'LL'}}</td>
+                                    <td class="action">
+                                      <div *ngIf="currentUser != null">
+                                        <div *ngIf="item.sender._id == currentUser.user_id">
+                                          <button class="btn btn-sm btn-secondary" (click)="deleteMyOffer(item)"><i class="cil-x"></i></button>
+                                        </div>
+                                        <div *ngIf="item.receiver._id == currentUser.user_id">
+                                          <button class="btn btn-sm btn-secondary" (click)="acceptOffer(item)"><i class="cil-check-alt"></i></button>
+                                          <button class="btn btn-sm btn-secondary" (click)="cancelOffer(item)"><i class="cil-x"></i></button>
+                                        </div>
+                                      </div>
+                                    </td>
+
+                                  </tr>
+                                  <tr *ngIf="offers.length==0 && offerLoading == false">
+                                      <td colspan="4">
+                                        <alert type="info" ng-reflect-type="info">
+                                          <div role="alert" class="alert alert-info" ng-reflect-ng-class="">
+                                           <strong>Oops!</strong> No Data Found
+                                          </div>
+                                        </alert>
+                                      </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <nav>
+                                <ul class="pagination" *ngIf="!offerLoading">
+                                  <li class="page-item" *ngIf="pageOffer!=1"><a class="page-link" href="javascript:void(0)" (click)="prevOfferPage()">Prev</a></li>
+                                  <li class="page-item" *ngIf="hasNextOfferPage"><a class="page-link" href="javascript:void(0)" (click)="nextOfferPage()">Next</a></li>
+                                </ul>
+                              </nav>
+                          </div>
+                          <div class="card-footer" *ngIf="itemInfo && !is_owner">
+                            <button class="btn btn-outline-primary" (click)="openOffer()">Make Offer</button>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tradeBlock">
+                    <div class="animated fadeIn">
+                        <div class="card">
+                          <div class="card-header">
+                            <i class="cil-swap-vertical titleIcon"></i>
+                            Trade History
+                            <div class="card-header-actions">
+                              <button class="btn" (click)="isHistoryCollapsed = !isHistoryCollapsed">
+                                <i class="icon-arrow-down" *ngIf="!isHistoryCollapsed"></i>
+                                <i class="icon-arrow-up" *ngIf="isHistoryCollapsed"></i>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="card-body historyBody"
+                               [collapse]="isHistoryCollapsed">
+                               <table class="table table-bordered table-striped table-sm">
+                                <thead>
+                                  <tr>
+                                    <th>Event</th>
+                                    <th>Price</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Transaction Hash</th>
+                                    <th>Created Date</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of histories">
+                                    <td>{{item.history_type}}</td>
+                                    <td>{{item.price}} ETH</td>
+                                    <td><div *ngIf="item.from_id != null"><a href="javascript:void(0)" [routerLink]="'/profile/' + item.from_id._id">{{item.from_id.first_name}} {{item.from_id.last_name}}</a></div></td>
+                                    <td><div *ngIf="item.to_id != null"><a href="javascript:void(0)" [routerLink]="'/profile/' + item.to_id._id">{{item.to_id.first_name}} {{item.to_id.last_name}}</a></div></td>
+                                    <td><div *ngIf="item.transaction_hash != ''"><a [href]="blockChainExplorer + 'tx/'+item.transaction_hash" target="_blank">{{item.transaction_hash}}</a></div></td>
+                                    <td>{{item.created_date | amDateFormat:'LL'}}</td>
+
+                                  </tr>
+                                  <tr *ngIf="histories.length==0 && historyLoading == false">
+                                      <td colspan="5">
+                                        <alert type="info" ng-reflect-type="info">
+                                          <div role="alert" class="alert alert-info" ng-reflect-ng-class="">
+                                           <strong>Oops!</strong> No Data Found
+                                          </div>
+                                        </alert>
+                                      </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <nav>
+                                <ul class="pagination" *ngIf="!historyLoading">
+                                  <li class="page-item" *ngIf="pageHistory!=1"><a class="page-link" href="javascript:void(0)" (click)="prevHistoryPage()">Prev</a></li>
+                                  <li class="page-item" *ngIf="hasNextHistoryPage"><a class="page-link" href="javascript:void(0)" (click)="nextHistoryPage()">Next</a></li>
+                                </ul>
+                              </nav>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="relatedBlock">
+                    <div class="animated fadeIn">
+                        <div class="card">
+                          <div class="card-header">
+                            <i class="cil-grid titleIcon"></i>
+                            More from this collection
+                            <div class="card-header-actions">
+                              <button class="btn" (click)="isMoreCollapsed = !isMoreCollapsed">
+                                <i class="icon-arrow-down" *ngIf="!isMoreCollapsed"></i>
+                                <i class="icon-arrow-up" *ngIf="isMoreCollapsed"></i>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="card-body"
+                               [collapse]="isMoreCollapsed">
+                               <app-gridskeleton *ngIf="moreloading"></app-gridskeleton>
+                               <app-nodata *ngIf="!moreloading && morecollection.length==0" msg="There is no data to display here"></app-nodata>
+                               <div class="row" *ngIf="!moreloading && morecollection.length>0">
+                                 <div *ngFor="let moreitem of morecollection" class="col-md-3">
+                                       <app-item [item]="moreitem" (itemEvent)="itemEvent($event)"> </app-item>
+                                 </div>
+                               </div>
+                          </div>
+                          <div class="card-footer" *ngIf="itemInfo && is_morecollection_viewall">
+                              <button class="btn btn-outline-primary" [routerLink]="'/collection/detail/'+itemInfo.collection_id._id">View Collection</button>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div bsModal #reportModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Report Problem</h4>
+        <button type="button" class="close" (click)="reportModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+              <label for="type">Type</label>
+              <textarea class="form-control" placeholder="Message" [(ngModel)]="reportMessage"></textarea>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="reportModal.hide()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="reportAction()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #offerModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Offer</h4>
+        <button type="button" class="close" (click)="offerModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+              <label for="type">Price</label>
+              <input type="text" class="form-control" placeholder="Price" [(ngModel)]="priceInput" />
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="offerModal.hide()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="addOfferAction()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-loader *ngIf="spinner"></app-loader>

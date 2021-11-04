@@ -1,0 +1,51 @@
+<div class="profileContainer" [ngStyle]="{'height':innerHeight+'px'}" (scroll)="scrollHandler($event)" #profileContainer>
+    <div class="topContainer" #topContainer>
+        <div class="profileHeader">
+            <div class="profileCover">
+                <img [src]="mediaBase+'/images/cover/'+profile_cover">
+                <div class="editAction" *ngIf="ownProfile">
+                    <button class="btn btn-secondary"><i class="icon-note"></i></button>
+                    <input type="file" ng2FileSelect [uploader]="cover_uploader" (change)="uploadCover()" multiple />
+                </div>
+            </div>
+            <div class="settingsAction" *ngIf="ownProfile">
+                <button class="btn btn-secondary" routerLink="/settings"><i class="icon-settings"></i></button>
+            </div>
+            <div class="profileAvatar">
+                <div class="profileAvatarInner">
+                    <img [src]="mediaBase+'/images/user/'+profile_image">
+                    <div class="avatarAction" *ngIf="ownProfile">
+                        <i class="icon-pencil"></i>
+                        <input type="file" ng2FileSelect [uploader]="uploader" (change)="uploadAvatar()" multiple />
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+        <div class="profileSubHeader" *ngIf="userInfo!=null">
+            <h2>{{profile_name}}</h2>
+            <p (click)="copyAddress()">{{userInfo.public_key.substring(0,4)}}...{{userInfo.public_key.substring(userInfo.public_key.length-4)}}<i class="fa fa-copy"></i></p>
+        </div>
+    </div>
+    <div class="app-body" [ngStyle]="{'min-height':innerHeight+'px'}">
+        <div class="custom-sidebar" #appSidebar [ngStyle]="{'height':innerHeight+'px','top':isFixedSidebar ? topMenuHeight+'px' : '0px','width':isToggled ? '50px' : '240px'}" [ngClass]="{'fixed': isFixedSidebar == true}">
+            <h4><span *ngIf="!isToggled">Profile Menu</span><i [ngClass]="{'cil-arrow-left': isToggled == false, 'cil-arrow-right': isToggled == true}" (click)="minimizeMenu()"></i></h4>
+            <ul>
+                <li [ngClass]="{'active': type=='collected'}" ><a href="javascript:void(0);" (click)="profileLink('collected')"><i class="cil-basket"></i><span *ngIf="!isToggled">Collected</span></a></li>
+                <li [ngClass]="{'active': type=='created'}" ><a href="javascript:void(0);" (click)="profileLink('created')"><i class="cil-note-add"></i><span *ngIf="!isToggled">Created</span></a></li>
+                <li [ngClass]="{'active': type=='favorited'}" ><a href="javascript:void(0);" (click)="profileLink('favorited')"><i class="cil-heart"></i><span *ngIf="!isToggled">Favorited</span></a></li>
+                <li [ngClass]="{'active': type=='activity'}"><a href="javascript:void(0);" (click)="profileLink('activity')" *ngIf="ownProfile"><i class="cil-bar-chart"></i><span *ngIf="!isToggled">Activity</span></a></li>
+                <li [ngClass]="{'active': type=='offers'}"><a href="javascript:void(0);" (click)="profileLink('offers')" *ngIf="ownProfile"><i class="cil-list-rich"></i><span *ngIf="!isToggled">Offers</span></a></li>
+            </ul>
+        </div>
+        <main class="main" [ngClass]="{'fixedContainer': isFixedSidebar == true && isToggled == false, 'minimizeContainer': isFixedSidebar == true && isToggled == true}">
+            <div class="container-fluid">
+                <router-outlet></router-outlet>
+            </div>
+        </main>
+    </div>
+
+    
+</div>
+<app-loader *ngIf="spinner"></app-loader>

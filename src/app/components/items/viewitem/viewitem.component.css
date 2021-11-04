@@ -1,0 +1,49 @@
+.appContainer {margin:88px 0 0;}
+.imgBlock {background-color: #e7e7e7; border: 1px solid #ccc; margin-bottom: 25px;}
+.imgBlock img {width: 100%;}
+.card-header {line-height: 30px; font-size: 16px; font-weight: 600; padding-right: 10px;}
+.card-footer {text-align: center;}
+.card-header i.titleIcon { font-size: 18px; position: relative; top: 3px;}
+.descBlock .card, .propertyBlock .card, .statBlock .card, .levelBlock .card{margin: 0; border-radius: 0; }
+
+.attributes_list {border:1px solid #ccc; background-color: #e7e7e7; padding: 25px 15px; text-align: center; margin: 0 0 15px; position: relative;}
+.attributes_list label, .attributes_list span {display: block; text-transform: capitalize; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;} 
+.attributes_list span {font-size: 16px; margin: 10px 0 0;}
+.attributes_list label {color: #999;}
+.closelist {position: absolute; width: 25px; height: 25px; text-align: center; line-height: 25px; background-color: red; right:0; top:0; color: #fff; cursor: pointer;}
+.closelist i {height: 25px; line-height: 25px;}
+.levelSeparater {text-align: center; font-size: 24px; line-height: 30px;}
+.level_progress {background-color: #ccc; border-radius: 10px; height: 13px;}
+.level_progress_value {background-color: green;  height: 13px; border-radius: 10px;}
+
+.collectionDetail {position: relative; cursor: pointer;}
+.collectionDetailLeft {width: 50px; height: 50px; position: absolute; left: 0; top: 0;}
+.collectionDetailLeft img {width: 50px; height: 50px; object-fit: cover;}
+.collectionDetailRight {padding-left: 60px;}
+.collectionDetailRight h4, .collectionDetailRight p{ margin: 0;}
+
+.infoItem .clear {clear: both}
+.infoItem label {float: left;}
+.infoItem span {float: right;}
+
+.infoBlock {position: relative;}
+.itemCategory {margin:5px 0 0;}
+.infoTools {border:1px solid #e7e7e7; position: absolute; right: 0; top: 0;}
+.infoTools button {border-left: 1px solid #e7e7e7;}
+.infoTools button.first {border:0 nonel}
+.infoBlock h2 {margin: 15px 0 0; text-transform: capitalize;}
+.infoBlockMoreItem {float: left; margin-right: 15px;}
+.infoBlockMoreItem a {text-transform: capitalize;}
+.infoBlockMore .clear {clear: both;}
+.infoBlockMoreItem i {font-size: 15px; position: relative; top: 2px; display: inline-block; margin-right: 2px;}
+.InfoPriceBlock {border:1px solid #e7e7e7; padding: 10px; margin: 15px 0 0;}
+.InfoPriceBlock p {margin: 0; padding: 0;}
+.InfoPriceBlock h2 {margin: 5px 0;}
+.priceBlock {margin-top: 15px;}
+
+.historyBody {overflow:hidden; overflow-x: auto; }
+.offerBlock .action button {margin-right: 10px; line-height: 13px;}
+.likedIcon {color:red}
+@media (min-width: 992px) {
+    .appContainer {margin:103px 0 0;}
+}

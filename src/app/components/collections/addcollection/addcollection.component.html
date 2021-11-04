@@ -1,0 +1,98 @@
+<div class="appContainer">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                <div class="card-header">
+                    {{page_title}}
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="collectionForm" (ngSubmit)="onSubmit(collectionForm)">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Collection Name" formControlName="name" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="name">Royalties</label>
+                                <input type="text" class="form-control" placeholder="Enter Royalties Percentage" formControlName="royalties" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" placeholder="Enter Description" formControlName="description"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="email">Collection Logo</label>
+                                <div class="image-help-block">This image will also be used for navigation. 350 x 350 recommended.</div>
+                                <div class="preview_empty_container" *ngIf="collection_logo == ''">
+                                    <div class="preview_empty_container_img">
+                                        <i class="cil-image"></i>
+                                    </div>
+                                    <p>No Logo Selected</p>
+                                    <div class="uploader_btn_container">
+                                        <button mat-menu-item class="btn btn-primary" type="button">
+                                            <i class="cil-image-plus"></i>
+                                            <span>Select Image</span>
+                                            <input type="file" ng2FileSelect [uploader]="logouploader" (change)="uploadLogo()" single />
+                                        </button>
+                                        
+                                    </div>
+                                </div>
+                                <div class="image_preview" *ngIf="collection_logo != ''">
+                                    <img [src]="mediaBase + '/images/collection/logo/' + collection_logo" />
+                                    <button class="image_preview_close" (click)="deleteLogo()">
+                                        remove
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="email">Collection Banner</label>
+                                <div class="image-help-block">This image will appear at the top of your collection page. Avoid including too much text in this banner image, as the dimensions change on different devices. 1400 x 400 recommended.</div>
+                                <div class="preview_empty_container" *ngIf="collection_banner == ''">
+                                    <div class="preview_empty_container_img">
+                                        <i class="cil-image"></i>
+                                    </div>
+                                    <p>No Banner Selected</p>
+                                    <div class="uploader_btn_container">
+                                        <button mat-menu-item class="btn btn-primary" type="button">
+                                            <i class="cil-image-plus"></i>
+                                            <span>Select Image</span>
+                                            <input type="file" ng2FileSelect [uploader]="banneruploader" (change)="uploadBanner()" signle />
+                                        </button>
+
+                                    </div>
+                                </div>
+                                <div class="image_preview" *ngIf="collection_banner != ''">
+                                    <img [src]="mediaBase + '/images/collection/banner/' + collection_banner" />
+                                    <button class="image_preview_close" (click)="deleteBanner()">
+                                        remove
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="submit" class="btn btn-primary px-4" [value]="button_title" />
+                        </div>
+                    </div>
+                    </form>
+                
+                </div>
+                </div>
+            </div>
+            </div>
+
+    </div>
+</div>
+<app-loader *ngIf="spinner"></app-loader>

@@ -1,0 +1,19 @@
+.topheader, .dropdown-menu {transform: translateY(0);box-shadow:0 5px 20px 5px rgb(138 155 165 / 15%);-webkit-transition : all 0.3s ease-out;transition : all 0.3s ease-out; position: fixed; left: 0px; top:0px; right:0px; z-index: 999;}
+.topheader .navbar-light .navbar-nav .show > .nav-link, .topheader .navbar-light .navbar-nav .active > .nav-link, .topheader .navbar-light .navbar-nav .nav-link.show, .topheader .navbar-light .navbar-nav .nav-link.active {color: #000;}
+.topheader .navbar-light .navbar-nav .nav-link {font-size: 16px; font-weight: 600; text-transform: capitalize;}
+.dropdown-menu {border:0 none}
+.dropdown-item {font-weight: 600; color: #666;}
+.topheader h1 img {width: 130px;}
+@media (min-width: 992px) {
+    .topheader .navbar {padding: 0rem 1rem;}
+    .topheader .navbar-expand-lg .navbar-nav .nav-link {
+        padding:1.5rem 1.5em
+    }
+}
+
+@media (max-width:992px) {
+.topheader .navbar {padding:0 1rem;}
+.topheader .navbar .navbar-brand {padding:0;}
+}
+
+.profileImage {width: 25px; height: 25px; border-radius: 50%; object-fit: cover; margin-right: 5px;}

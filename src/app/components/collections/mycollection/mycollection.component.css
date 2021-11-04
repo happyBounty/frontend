@@ -1,0 +1,11 @@
+.appContainer {margin:88px 0 0;}
+.pageHeader {position: relative; padding-right: 165px;}
+.pageHeader h2, .pageHeader p {margin:0; padding: 0;}
+.pageHeader button {position: absolute; right: 0; top:0}
+.pageContent {margin:30px 0 0;}
+.card-body-filter {display: flex; flex-direction: row; margin-top: 25px;}
+.card-body-filter .row {flex: 1;}
+.card-body-filter-action button {margin-left: 10px; font-size: 14px; height: 35px;}
+@media (min-width: 992px) {
+    .appContainer {margin:103px 0 0;}
+}

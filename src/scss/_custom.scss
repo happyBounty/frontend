@@ -1,0 +1,18 @@
+// Here you can add other styles
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+body{
+    background: white;
+}
+body, .mat-body, .mat-body-1, .mat-typography, input, button, select, optgroup, textarea,  {
+    font-family: 'Lato', sans-serif;
+}
+.mat-h1, .mat-headline, .mat-typography h1 {margin:0; font-family: 'Lato', sans-serif; font-weight: 600;}
+.mat-h2, .mat-title, .mat-typography h2, .mat-h4, .mat-subheading-1, .mat-typography h4 {font-family: 'Lato', sans-serif; font-weight: 600;}
+.btn-primary {font-family: 'Lato', sans-serif; font-size: 16px; font-weight: 600;}
+.mainContainer {margin-top: 100px;}
+.modal-title{margin: 0 !important;}
+
+
+@media (max-width:992px) {
+.app-body {margin-top: 65px;}
+}

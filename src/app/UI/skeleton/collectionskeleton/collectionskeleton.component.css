@@ -1,0 +1,12 @@
+.collectionItem {border:1px solid #e7e7e7; margin:0 0 25px;}
+.collectionItemImg {position: relative; padding-bottom: 35px; height: 240px;}
+.collectionItemAuthor {position: absolute; bottom: 0px; left: 0; right: 0;}
+.collectionItemAuthorInner {border:3px solid #fff; width: 70px; height: 70px; border-radius: 50%; margin: 0 auto;}
+.collectionItemTitle {text-align: center; margin: 15px 0 0;}
+.collectionItemCount {text-align: center; margin: 0 0 15px;}
+@media screen and (max-width: 1200px) {
+    .collectionItemImg {height: 200px;}
+}
+@media screen and (max-width: 992px) {
+    .collectionItemImg {height: 160px;}
+}

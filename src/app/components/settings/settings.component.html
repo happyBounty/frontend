@@ -1,0 +1,18 @@
+<div class="appContainer">
+    <div class="app-body" [ngStyle]="{'min-height':innerHeight+'px'}">
+        <div class="custom-sidebar fixed" #appSidebar [ngStyle]="{'height':innerHeight+'px','top':topMenuHeight+'px','width':isToggled ? '50px' : '240px'}">
+            <h4><span *ngIf="!isToggled">Settings Menu</span><i [ngClass]="{'cil-arrow-left': isToggled == false, 'cil-arrow-right': isToggled == true}" (click)="minimizeMenu()"></i></h4>
+            <ul>
+                <li [ngClass]="{'active': type=='wallet'}" ><a href="javascript:void(0);" routerLink="/settings/wallet"><i class="cil-money"></i><span *ngIf="!isToggled">Wallet</span></a></li>
+                <li [ngClass]="{'active': type=='general'}" ><a href="javascript:void(0);" routerLink="/settings/general"><i class="cil-settings"></i><span *ngIf="!isToggled">General</span></a></li>
+                <li [ngClass]="{'active': type=='changepassword'}" ><a href="javascript:void(0);" routerLink="/settings/changepassword"><i class="cil-lock-locked"></i><span *ngIf="!isToggled">Update Password</span></a></li>
+                <li><a href="javascript:void(0);" (click)="logoutAction()"><i class="cil-account-logout"></i><span *ngIf="!isToggled">Logout</span></a></li>
+            </ul>
+        </div>
+        <main class="main" [ngClass]="{'fixedContainer': isToggled == false, 'minimizeContainer': isToggled == true}">
+            <div class="container-fluid">
+                <router-outlet></router-outlet>
+            </div>
+        </main>
+    </div>
+</div>

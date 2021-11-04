@@ -1,0 +1,24 @@
+
+<div class="collectionItem">
+    <div class="collectionItemImg" (click)="viewAction()">
+        <img [src]="mediaBase + '/images/item/thumb/' + item.thumb" class="collectionItemImgBanner"/>
+    </div>
+   <div class="collectionItemContent">
+        <div class="collectionItemTitle">
+            {{item.name}}
+        </div>
+        <div class="collectionItemCount">
+            Price {{item.price}} ETH
+        </div>
+        <div class="moreAction dropdown dropright" dropdown *ngIf="item.status == 'inactive'">
+            <button [id]="'morelink-dropdown'"  class="btn" dropdownToggle aria-controls="more-dropdown"><i class="icon-options-vertical"></i></button>
+            <div [id]="'more-dropdown'" class="dropdown-menu dropdown-menu-right" aria-labelledby="morelink-dropdown" *dropdownMenu>
+                <a class="dropdown-item" href="javascript:void(0)" (click)="editAction()">Edit</a> 
+                <a class="dropdown-item" href="javascript:void(0)" (click)="deleteAction()">Delete</a> 
+                <a class="dropdown-item" href="javascript:void(0)" (click)="publishAction()">Publish</a> 
+            </div>
+        </div>
+   </div>
+
+    
+</div>

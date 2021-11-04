@@ -1,0 +1,6 @@
+.historyBody {overflow:hidden; overflow-x: auto; }
+.itemDetail img {width: 50px; height: 50px; cursor: pointer; object-fit: cover;}
+.collectionMainContainer {margin:128px 0 0;}
+@media (min-width: 992px) {
+    .collectionMainContainer {margin:143px 0 0;}
+}

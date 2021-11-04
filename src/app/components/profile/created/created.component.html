@@ -1,0 +1,15 @@
+<div class="collectionMainContainer" infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="50"
+(scrolled)="onNextPage()">
+    <div class="container">
+        
+        <app-itemskeleton *ngIf="loading"></app-itemskeleton>
+        <app-nodata *ngIf="!loading && items.length==0" msg="There is no data to display here"></app-nodata>
+        <div class="row" *ngIf="!loading && items.length>0">
+            <div class="col-md-4" *ngFor="let item of items">
+                  <app-item [item]="item" (itemEvent)="itemEvent($event)"> </app-item>
+            </div>
+        </div>
+    </div>
+</div>

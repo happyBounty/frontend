@@ -1,0 +1,128 @@
+<div class="appContainer">
+    <div class="nft-main">
+        <div class="nft-banner">
+            <div class="container-fluid">
+                <ul class="banner_lists">
+                    <li>
+                        <h2>Discover, Collect, and sell<br>
+                            extraordinary <span>NFTs</span></h2>
+                            <p>Etiam auctor urna ac nisi feugiat, in tempor massa tempus arcu necneque efficitur porta</p>
+                            <a href="javascript:void(0)" routerLink="/marketplace">Explore</a>
+                            <a href="javascript:void(0)" (click)="openCreate()">Create</a>
+                    </li>
+                    <li>
+                        <img src="assets/images/banner_images.png">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="nft-trending" *ngIf="collections.length>0">
+            <div class="nft-trending-head">
+                <div class="container">
+                    <h2>Trending</h2>
+                    <ul class="top_tabs">
+                        <li [ngClass]="{'active':collectionMenu == ''}" (click)="showItemByCollection('')"><a href="javascript:void(0)">All items</a></li>
+                        <li *ngFor="let item of collections" [ngClass]="{'active':item._id == collectionMenu}" (click)="showItemByCollection(item._id)"><a href="javascript:void(0)">{{item.name}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nft-trending_body">
+                <div class="container">
+                    <app-itemskeleton *ngIf="loading"></app-itemskeleton>
+                    <div class="row" *ngIf="!loading && collectionItems.length>0">
+                        <div class="col-md-4" *ngFor="let item of collectionItems">
+                              <app-item [item]="item" (itemEvent)="itemEvent($event)"> </app-item>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nft-sell">
+            <div class="nft-sell-head">
+                <div class="container">
+                    <h2>Create and Sell your Nfts</h2>
+                    <p>ellentesque mollis magna nec tortor mattis rIn quis purus.</p>
+                </div>
+            </div>
+        
+            <div class="container">
+                <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="nft-sell-blocks">
+                        <div class="nft-sell-image">
+                            <img src="assets/images/wallet.png">
+                        </div>
+        
+                            <h4>Setup your Wallet</h4>
+                            <p>Etiam auctor urna ac nisi feugiat, in tempor massa tempus arcu nec neque efficitur porta ollis magna nec tortor mattis eugiat, in tempoarcu nec neque effici...</p>
+                    </div>
+                </div>
+        
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="nft-sell-blocks">
+                        <div class="nft-sell-image">
+                            <img src="assets/images/collections.png">
+                        </div>
+        
+                            <h4>Create your collection</h4>
+                            <p>Etiam auctor urna ac nisi feugiat, in tempor massa tempus arcu nec neque efficitur porta ollis magna nec tortor mattis eugiat, in tempoarcu nec neque effici...</p>
+                    </div>
+                </div>
+        
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="nft-sell-blocks">
+                        <div class="nft-sell-image">
+                            <img src="assets/images/nfts.png">
+                        </div>
+        
+                            <h4>Add your Nfts</h4>
+                            <p>Etiam auctor urna ac nisi feugiat, in tempor massa tempus arcu nec neque efficitur porta ollis magna nec tortor mattis eugiat, in tempoarcu nec neque effici...</p>
+                    </div>
+                </div>
+        
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="nft-sell-blocks">
+                        <div class="nft-sell-image">
+                            <img src="assets/images/sale.png">
+                        </div>
+        
+                            <h4>List Them for Sale</h4>
+                            <p>Etiam auctor urna ac nisi feugiat, in tempor massa tempus arcu nec neque efficitur porta ollis magna nec tortor mattis eugiat, in tempoarcu nec neque effici...</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="nft-category">
+            <div class="nft-category-head">
+                <div class="container">
+                    <h2>Browse By Category</h2>
+                    <p>ellentesque mollis magna nec tortor mattis rIn quis purus.</p>
+                </div>
+            </div>
+            <div class="nft-category-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3" *ngFor="let category of categories">
+                            <div class="item" [routerLink]="['/marketplace']" [queryParams]="{category_id: category._id}">
+                                <div class="nft-category-listing">
+                                    <img [src]="mediaBase + '/images/categories/' + category.category_image">
+                                    <div class="nft-category-listing-overlay"></div>
+                                    <ul class="ntf-category-foot">
+                                        <li>
+                                            <h4>{{category.title}}</h4>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="nft-bottom-block">
+            <p>Copyright @2021 CryptoTrades All Rights Reserved</p>
+         </div>
+    </div>
+</div>

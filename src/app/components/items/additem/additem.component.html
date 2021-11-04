@@ -1,0 +1,340 @@
+<div class="appContainer">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                <div class="card-header">
+                    {{page_title}}
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm)">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Name" formControlName="name" required>
+                            </div>
+                        </div>
+        
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="video_type">Category ID</label>
+                                <select class="form-control" formControlName="category_id">
+                                    <option value="">Select Category</option>
+                                    <option [value]="item._id" *ngFor="let item of categories">{{item.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+    
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" placeholder="Enter Description" formControlName="description"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input type="text" class="form-control" placeholder="Enter Price" formControlName="price" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="price">External Link</label>
+                                <input type="text" class="form-control" placeholder="Enter External Link" formControlName="external_link" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="email">Item Thumb</label>
+                                <div class="image-help-block">This image will also be used for navigation. 350 x 350 recommended.</div>
+                                <div class="preview_empty_container" *ngIf="item_thumb == ''">
+                                    <div class="preview_empty_container_img">
+                                        <i class="cil-image"></i>
+                                    </div>
+                                    <p>No Thumb Selected</p>
+                                    <div class="uploader_btn_container">
+                                        <button mat-menu-item class="btn btn-primary" type="button">
+                                            <i class="cil-image-plus"></i>
+                                            <span>Select Image</span>
+                                            <input type="file" ng2FileSelect [uploader]="thumbuploader" (change)="uploadThumb()" single />
+                                        </button>
+                                        
+                                    </div>
+                                </div>
+                                <div class="image_preview" *ngIf="item_thumb != ''">
+                                    <img [src]="mediaBase + '/images/item/thumb/' + item_thumb" />
+                                    <button class="image_preview_close" (click)="deleteThumb()">
+                                        remove
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="email">Item Media</label>
+                                <div class="image-help-block">File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG. Max size: 100 MB</div>
+                                <div class="preview_empty_container" *ngIf="item_media == '' && !is_media_uploading">
+                                    <div class="preview_empty_container_img">
+                                        <i class="cil-note-add"></i>
+                                    </div>
+                                    <p>No Media Selected</p>
+                                    <div class="uploader_btn_container">
+                                        <button mat-menu-item class="btn btn-primary" type="button">
+                                            <i class="cil-image-plus"></i>
+                                            <span>Select Media</span>
+                                            <input type="file" ng2FileSelect [uploader]="mediauploader" (change)="uploadMedia()" single />
+                                        </button>
+                                        
+                                    </div>
+                                </div>
+                                <div class="preview_empty_container" *ngIf="item_media != '' && !is_media_uploading">
+                                    <div class="preview_empty_container_img">
+                                        <i class="cil-note-add"></i>
+                                    </div>
+                                    <p>{{item_media}}</p>
+                                    <button class="image_preview_close" (click)="deleteMedia()">
+                                        remove
+                                    </button>
+                                </div>
+
+                                <div class="media_progress_cotainer" *ngIf="is_media_uploading">
+                                    <mat-progress-bar [value]="progress"></mat-progress-bar>
+                                    <button mat-menu-item class="media_progress_cotainer_close" (click)="cancelMedia()">
+                                        <i class="icon-close"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="listContainer">
+                                    <div class="listContainerHeader">
+                                        <div class="listContainerIcon">
+                                            <i class="cil-list-rich"></i>
+                                        </div>
+                                         <p class="listContainerHeaderTitle">Properties</p>
+                                         <p class="listContainerHeaderSubTitle">Textual traits that show up as rectangles</p>
+                                         <button class="btn btn-primary" type="button" (click)="propertyModal.show()"><i class="cil-plus"></i></button>
+                                    </div>
+                                    <div class="listContainerContent" *ngIf="attributes.length>0">
+                                        <div class="row">
+                                            <div class="col-sm-4" *ngFor="let item of attributes; let i=index;">
+                                                <div class="attributes_list">
+                                                      <label>{{item.type}}</label>
+                                                      <span>{{item.name}}</span>
+                                                      <div class="closelist" (click)="propertyItemClose(i)">
+                                                          <i class="cil-x"></i>
+                                                      </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="listContainer">
+                                    <div class="listContainerHeader">
+                                        <div class="listContainerIcon">
+                                            <i class="cil-star"></i>
+                                        </div>
+                                         <p class="listContainerHeaderTitle">Levels</p>
+                                         <p class="listContainerHeaderSubTitle">Numerical traits that show as a progress bar</p>
+                                         <button class="btn btn-primary" type="button" (click)="levelModal.show()"><i class="cil-plus"></i></button>
+                                    </div>
+                                    <div class="listContainerContent" *ngIf="levels.length>0">
+                                        <div class="row">
+                                            <div class="col-sm-4" *ngFor="let item of levels; let i=index;">
+                                                <div class="attributes_list">
+                                                      <label>{{item.name}} ({{item.value}}/{{item.valueof}})</label>
+                                                      <div class="level_progress">
+                                                          <div class="level_progress_value" [ngStyle]="{'width':(item.value/item.valueof) * 100 +'%'}"></div>
+                                                      </div>
+                                                      <div class="closelist" (click)="levelItemClose(i)">
+                                                          <i class="cil-x"></i>
+                                                      </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="listContainer">
+                                    <div class="listContainerHeader">
+                                        <div class="listContainerIcon">
+                                            <i class="cil-chart"></i>
+                                        </div>
+                                         <p class="listContainerHeaderTitle">Stats</p>
+                                         <p class="listContainerHeaderSubTitle">Numerical traits that just show as numbers</p>
+                                         <button class="btn btn-primary" type="button" (click)="statModal.show()"><i class="cil-plus"></i></button>
+                                    </div>
+                                    <div class="listContainerContent" *ngIf="stats.length>0">
+                                        <div class="row">
+                                            <div class="col-sm-4" *ngFor="let item of stats; let i=index;">
+                                                <div class="attributes_list">
+                                                      <label>{{item.name}}</label>
+                                                      <label>{{item.value}} of {{item.valueof}}</label>
+                                                      <div class="closelist" (click)="statItemClose(i)">
+                                                        <i class="cil-x"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-form-label" for="inline-radios">Show Media For All</label>
+                        <div class="col-form-label">
+                            <div class="form-check form-check-inline mr-1" id="inline-radios">
+                            <input class="form-check-input" type="radio" formControlName="unlock_content_url"  id="inlineRadio1" value="true">
+                            <label class="form-check-label" for="inlineRadio1">True</label>
+                            </div>
+                            <div class="form-check form-check-inline mr-1">
+                            <input class="form-check-input" type="radio" formControlName="unlock_content_url" id="inlineRadio2" value="false">
+                            <label class="form-check-label" for="inlineRadio2">False</label>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    </div>
+                    <div class="row" *ngIf="!is_media_uploading">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary px-4">{{button_title}}</button>
+                        </div>
+                    </div>
+                    </form>
+                
+                </div>
+                </div>
+            </div>
+            </div>
+
+    </div>
+</div>
+
+<div bsModal #propertyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Property</h4>
+          <button type="button" class="close" (click)="propertyModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="type">Type</label>
+                <input type="text" class="form-control" placeholder="Character" [(ngModel)]="propertyModalType" required>
+            </div>
+
+            <div class="form-group">
+                <label for="type">Name</label>
+                <input type="text" class="form-control" placeholder="Male" [(ngModel)]="propertyModalName" required>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="propertyModal.hide()">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="propertyAction()">Add</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div bsModal #levelModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Level</h4>
+          <button type="button" class="close" (click)="levelModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="type">Name</label>
+                <input type="text" class="form-control" placeholder="Speed" [(ngModel)]="levelModalName" required>
+            </div>
+            <div class="form-group">
+                <label for="type">Value</label>
+                <div class="row">
+                    <div class="col-5">
+                        <input type="number" class="form-control" placeholder="5" [(ngModel)]="levelModalValue" min="0" required>
+                    </div>
+                    <div class="col-2">
+                        <div class="levelSeparater">
+                            /
+                        </div>
+                       
+                    </div>
+                    <div class="col-5">
+                        <input type="number" class="form-control" placeholder="100" [(ngModel)]="levelModalValueOf" required>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="levelModal.hide()">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="levelAction()">Add</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div bsModal #statModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Stat</h4>
+          <button type="button" class="close" (click)="statModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="type">Name</label>
+                <input type="text" class="form-control" placeholder="Speed" [(ngModel)]="statModalName" required>
+            </div>
+            <div class="form-group">
+                <label for="type">Value</label>
+                <div class="row">
+                    <div class="col-5">
+                        <input type="number" class="form-control" placeholder="5" [(ngModel)]="statModalValue" min="0" required>
+                    </div>
+                    <div class="col-2">
+                        <div class="levelSeparater">
+                            /
+                        </div>
+                       
+                    </div>
+                    <div class="col-5">
+                        <input type="number" class="form-control" placeholder="100" [(ngModel)]="statModalValueOf" required>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="statModal.hide()">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="statAction()">Add</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<app-loader *ngIf="spinner"></app-loader>

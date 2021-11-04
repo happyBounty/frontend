@@ -1,0 +1,77 @@
+<div class="appContainer">
+    <div class="collectionHeader">
+        <div class="collectionCover">
+            <img [src]="mediaBase + '/images/collection/banner/' + collection_banner" />
+        </div>
+        <div class="collectionLogo">
+            <div class="collectionLogoInner">
+                <img [src]="mediaBase+'/images/collection/logo/'+collection_logo">
+            </div>
+        </div>
+    </div>
+    <div class="collectionSubHeader" *ngIf="collectionInfo!=null">
+        <h2>{{collection_name}}</h2>
+        <div class="collection_stats">
+            <ul>
+                <li><span>{{collectionInfo.item_count_str}}</span><label>Items</label></li>
+                <li><span>{{collectionInfo.royalties}}%</span><label>Royalties</label></li>
+                <li><span>{{collectionInfo.volume_traded_str}}</span><label>Volume Traded</label></li>
+            </ul>
+        </div>
+        <p>{{collection_desc}}</p>
+    </div>
+
+    <div class="collectionMainContainer">
+        <div class="container">
+            <div class="listContainer" *ngIf="recent.length>0 || loading">
+                <div class="listContainerHeader">
+                   <h2><i class="cil-album"></i> Recently Listed</h2>
+                   <div class="viewall" *ngIf="is_recent_viewall" (click)="viewAllAction('recent')">
+                     View All <i class="icon-arrow-right"></i> 
+                   </div>
+                </div>
+                <div class="listContainerContent">
+                  <app-gridskeleton *ngIf="loading"></app-gridskeleton>
+                  <div class="row" *ngIf="recent.length>0">
+                    <div *ngFor="let item of recent" class="col-md-3">
+                          <app-item [item]="item" (itemEvent)="itemEvent($event)"> </app-item>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="listContainer" *ngIf="minted.length>0 || loading">
+              <div class="listContainerHeader">
+                 <h2><i class="cil-fire"></i>Newly Minted</h2>
+                 <div class="viewall" *ngIf="is_minted_viewall" (click)="viewAllAction('minted')">
+                   View All <i class="icon-arrow-right"></i> 
+                 </div>
+              </div>
+              <div class="listContainerContent">
+                <app-gridskeleton *ngIf="loading"></app-gridskeleton>
+                <div class="row" *ngIf="minted.length>0">
+                  <div *ngFor="let item of minted" class="col-md-3">
+                        <app-item [item]="item" (itemEvent)="itemEvent($event)"> </app-item>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="listContainer" *ngIf="onauction.length>0 || loading">
+            <div class="listContainerHeader">
+               <h2><i class="cil-graph"></i>On Auction</h2>
+               <div class="viewall" *ngIf="is_onauction_viewall" (click)="viewAllAction('onauction')">
+                 View All <i class="icon-arrow-right"></i> 
+               </div>
+            </div>
+            <div class="listContainerContent">
+              <app-gridskeleton *ngIf="loading"></app-gridskeleton>
+              <div class="row" *ngIf="onauction.length>0">
+                <div *ngFor="let item of onauction" class="col-md-3">
+                      <app-item [item]="item" (itemEvent)="itemEvent($event)"> </app-item>
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+

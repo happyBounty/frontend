@@ -1,0 +1,37 @@
+.appContainer {margin:58px 0 0;}
+.collectionCover {height: 250px;}
+.collectionCover img {width: 100%; object-fit: cover; height: 250px;}
+.collectionHeader {position: relative; padding-bottom: 80px;}
+.collectionLogo {position: absolute; bottom: 18px; left: 0; right: 0;}
+.collectionLogoInner {width: 125px; height: 125px; margin: 0 auto;}
+.collectionLogoInner img {width: 125px; height: 125px; border-radius: 50%; object-fit: cover;}
+.collectionSubHeader h2, .collectionSubHeader p {margin: 0px; padding:0 20px; text-align: center;}
+.collection_stats {margin: 15px auto; width: 364px; border: 1px solid #e7e7e7;}
+.collection_stats ul, .collection_stats li {list-style: none;}
+.collection_stats ul {margin: 0; padding: 0;}
+.collection_stats li {display: inline-block; width: 120px; border-left: 1px solid #e7e7e7; padding:15px 0; text-align: center;}
+.collection_stats li.first {border:0 none}
+.collection_stats li span, .collection_stats li label {display: block; margin: 0;}
+.collection_stats li span {color: #444; font-size: 18px; font-weight: 600;}
+.collection_stats li label {font-size: 14px; color: #999;}
+.settingsAction {position: absolute; right:15px; top:265px; z-index: 2;}
+.collectionMainContainer {margin:30px 0 0;}
+
+.collectionItem {border:1px solid #e7e7e7; margin:0 0 25px;}
+.collectionItemImg {position: relative; height: 240px;}
+.collectionItemTitle {text-align: left; margin: 15px 15px 0;}
+.collectionItemCount {text-align: left; margin: 0 15px 15px;}
+
+.card-body-filter {display: flex; flex-direction: row; margin-top: 25px;}
+.card-body-filter .row {flex: 1;}
+.card-body-filter-action button {margin-left: 10px; font-size: 14px; height: 35px;}
+
+@media screen and (max-width: 1200px) {
+    .collectionItemImg {height: 200px;}
+}
+@media screen and (max-width: 992px) {
+    .collectionItemImg {height: 160px;}
+}
+@media (min-width: 992px) {
+    .appContainer {margin:73px 0 0;}
+}

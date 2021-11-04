@@ -1,0 +1,21 @@
+.collectionItem {border:1px solid #e7e7e7; margin:0 0 25px; cursor: pointer;}
+.collectionItemImg {position: relative; padding-bottom: 35px; height: 240px;}
+.collectionItemImgBanner {width: 100%; height: 205px; object-fit: cover; background-color: #e7e7e7;}
+.collectionItemAuthor {position: absolute; bottom: 0px; left: 0; right: 0;}
+.collectionItemAuthorInner {border:3px solid #fff; width: 70px; height: 70px; border-radius: 50%; margin: 0 auto;}
+.collectionItemAuthorInner img {width: 64px; height: 64px; object-fit: cover; border-radius: 50%;}
+.collectionItemTitle {text-align: center; margin: 15px 0 0; font-size: 16px; text-transform: capitalize; color: #444; font-weight: 600; white-space: nowrap;text-overflow:ellipsis; overflow: hidden; padding:0 10px}
+.collectionItemCount {text-align: center; margin: 0 0 15px; font-size: 14px;}
+@media screen and (max-width: 1200px) {
+    .collectionItemImg{height: 200px;}
+    .collectionItemImgBanner {height: 165px;}
+}
+@media screen and (max-width: 992px) {
+    .collectionItemImg {height: 160px;}
+    .collectionItemImgBanner {height: 125px;}
+}
+
+@media screen and (max-width: 768px) {
+    .collectionItemImg {height: 240px;}
+    .collectionItemImgBanner {height: 205px;}
+}

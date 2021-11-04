@@ -1,0 +1,14 @@
+# WebStorm
+.idea
+*.iml
+
+# Build and deploy
+/node_modules
+/src/css/*.min.css
+/src/js/*.min.js
+
+# Misc
+.DS_Store
+
+# Logs
+npm-debug.log*

@@ -1,0 +1,139 @@
+.appContainer {margin:58px 0 0;}
+.nft-main .container-fluid {padding-left: 50px;padding-right: 50px;}
+.nft-main .nft-banner{background:url('./../../../assets/images/banner.jpg');width:100%;height:700px;background-size:100% 100%;background-repeat:no-repeat}
+.nft-main .nft-banner .container-fluid{height:100%}
+.nft-main .nft-banner ul.banner_lists{height: 100%;display: flex;justify-content: center;align-items: center;padding-left: 0}
+.nft-main .nft-banner ul.banner_lists li{display:inline-block}
+.nft-main .nft-banner ul.banner_lists li:first-child{width:45%}
+.nft-main .nft-banner ul.banner_lists li:last-child{width:55%;text-align:center}
+.nft-main .nft-banner ul.banner_lists li img{max-width:100%;border-radius:10px}
+.nft-main .nft-banner ul.banner_lists li h2{font-size:46px;color:#000000; font-weight: 700; line-height: 55px;}
+.nft-main .nft-banner ul.banner_lists li h2 span{color:#ee294f}
+.nft-main .nft-banner ul.banner_lists li p{font-size:16px;color:#7a7a7a;margin-bottom:50px}
+.nft-main .nft-banner ul.banner_lists li a{width:110px;background:transparent;border:2px solid #ff2c51;font-size:16px;padding:8px 20px;border-radius:43px;display:inline-block;text-align:center;margin-right:20px;color:#ff2b50}
+.nft-main .nft-banner ul.banner_lists li a:hover{background:rgb(255,67,100);background: linear-gradient(90deg, rgba(255,67,100,1) 0%, rgba(255,71,75,1) 50%, rgba(255,74,47,1) 100%);color: #ffffff;text-decoration:none}
+
+.nft-main .nft-trending{margin-bottom:30px; margin-top: 30px;}
+.nft-main .nft-trending .nft-trending-head{width: 100%;margin-bottom:20px;display:inline-block;}
+.nft-main .nft-trending .nft-trending-head h2{font-size:30px;color:#000000}
+.nft-main .nft-trending ul.top_tabs{padding:10px;margin:10px 0;background:#fafafa}
+.nft-main .nft-trending ul.top_tabs li{display:inline-block;}
+.nft-main .nft-trending ul.top_tabs li a{font-size:14px;color:#7a7a7a;padding:6px 15px;margin:10px 5px;background:#ffffff;border-radius:20px;display:inline-block;box-shadow:0 5px 15px -5px #cccccc}
+.nft-main .nft-trending ul.top_tabs li.active a{background:rgb(255,67,100);background:linear-gradient(90deg, rgba(255,67,100,1) 0%, rgba(255,71,75,1) 50%, rgba(255,74,47,1) 100%);color:#ffffff;text-decoration:none}
+.nft-main .nft-trending ul.top_tabs li a:hover{background:rgb(255,67,100);background:linear-gradient(90deg, rgba(255,67,100,1) 0%, rgba(255,71,75,1) 50%, rgba(255,74,47,1) 100%);color:#ffffff;text-decoration:none}
+
+.nft-main .nft-sell{width:100%;background:#fdefed;padding:40px 0 60px 0;display:inline-block}
+.nft-main .nft-sell .nft-sell-head{padding:15px 0 35px 0}
+.nft-main .nft-sell .nft-sell-head h2{ font-weight: 700;font-size:30px;color:#000000}
+.nft-main .nft-sell .nft-sell-head p{font-size:16px;color:#7a7a7a}
+.nft-main .nft-sell .nft-sell-blocks{background:#f3ecfa;padding:15px;border-radius:20px;margin-bottom:30px;display:inline-block; min-height: 300px;}
+.nft-main .nft-sell .nft-sell-blocks:hover{background:#f6f9ef;}
+.nft-main .nft-sell .nft-sell-blocks .nft-sell-image{width:100%;text-align:center;display:inline-block;padding:20px 20px 40px 20px}
+.nft-main .nft-sell .nft-sell-blocks h4{font-weight: 600; font-size:18px;color:#000000;text-align:left}
+.nft-main .nft-sell .nft-sell-blocks p{font-size:14px;color:#7a7a7a;text-align:left;margin-bottom:5px}
+
+.nft-main .nft-category{width:100%;padding:0 0 60px 0;display:inline-block; margin-top: 30px;}
+.nft-main .nft-category .nft-category-head{padding:0 0 20px 0}
+.nft-main .nft-category .nft-category-head h2{font-weight:600; font-size:30px;color:#000000}
+.nft-main .nft-category .nft-category-head p{font-size:16px;color:#7a7a7a}
+.nft-main .nft-category .nft-category-listing{display: inline-block;height:300px;text-align:center;position:relative;margin:0 2px;width:100%;overflow:hidden;border-radius:20px}
+.nft-main .nft-category .nft-category-listing > img{width:100%;height:100%;border-radius:10px;-webkit-transition:all 0.2s linear;transition:all 0.2s linear; object-fit: cover;}
+.nft-main .nft-category .nft-category-listing:hover > img{-webkit-transform:scale(1.1);transform:scale(1.1)}
+.nft-main .nft-category ul.ntf-category-foot{width:100%;padding:15px 15px;margin-bottom:0;padding-left:0;position:absolute;bottom:0}
+.nft-main .nft-category ul.ntf-category-foot li{text-align: left; padding:0 15px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.nft-main .nft-category ul.ntf-category-foot li h4{font-weight: 600; font-size:15px;color:#ffffff;margin-bottom:0}
+.nft-main .nft-category ul.ntf-category-foot li p{font-size:13px;color:#ffffff;margin-bottom:0}
+.nft-main .nft-category .item {cursor: pointer;}
+
+.nft-main .nft-bottom-block{width:100%;display:inline-block;background:#333333;text-align:center}
+.nft-main .nft-bottom-block p{font-size:16px;color:#ffffff;margin-bottom:0;padding:11px}
+
+.nft-main .nft-category .nft-category-listing-overlay { position: absolute; background: rgba(0,0,0,0.5); left: 0; right: 0; bottom: 0; top: 0;}
+@media (min-width: 992px) {
+    .appContainer {margin:73px 0 0;}
+}
+
+@media(min-width:1200px)
+{
+.nft-main footer.nft-footer .col-6.col-md{padding-left:7%}
+}
+
+@media(max-width: 1199px)
+{
+.nft-main .nft-banner ul.banner_lists li h3{font-size:36px}
+.nft-main .nft-details-section ul.details_content_list li ul.detail_content_sub li:nth-child(2){width:53%}
+.nft-main.map-container .map-container-title{padding-top:20px;text-align:center;}
+.nft-main .nft-listing-main .nft-listing-head img {max-width: 100%; }
+.nft-main .nft-listing-main .nft-listing-head {text-align: center;}
+}
+
+@media (min-width:992px)
+{
+.nft-main .nft-detail-sub .nft-detail-block .nft-detail-banner{height:100%}
+.nft-main .nft-detail-sub .nft-detail-block .nft-detail-banner img{height:100%;object-fit:cover}
+}
+
+@media (max-width:991px)
+{
+.nft-main .nft-banner{height:600px}
+.nft-main .nft-resources-banner ul.nft-resources-list li p{font-size:14px}
+.nft-sell .nft-sell-blocks{height:auto}
+.nft-main .nft-listing-main .nft-listing-content .nft-listing-foot ul.nft-listing-list li:first-child{width:100%;text-align:center}
+.nft-main .nft-listing-main .nft-listing-content .nft-listing-foot ul.nft-listing-list li:last-child{width:100%;text-align:center}
+.nft-main .nft-listing-main .nft-listing-content{padding:10px 15px}
+.nft-main .nft-listing-main .nft-listing-content h4 a{font-size:18px}
+.nft-main .nft-listing-main .nft-listing-content p{font-size:14px}
+.nft-main .nft-banner ul.banner_lists li h3{font-size:30px}
+.nft-main .nft-trending ul.top_tabs{text-align:center}
+.nft-main .footer-details{width:100%;text-align:center;margin-bottom:20px}
+.nft-main .nft-category .nft-category-listing {height: 200px;}
+.appContainer {margin: 65px 0 0;}
+
+
+/**/
+.nft-main .nft-details-section .details-block{margin-bottom:30px;height:auto}
+}
+
+@media (max-width: 767px)
+{
+.nft-main ul.navbar-nav li.nav-item:nth-last-child(2),.nft-main ul.navbar-nav li.nav-item:last-child{display:block}
+.nft-main .container-fluid{padding-left:15px;padding-right:15px}
+.nft-main .nft-banner ul.banner_lists{display:inline-block}
+.nft-main .nft-banner ul.banner_lists li a{margin-right:10px}
+.nft-main .nft-banner ul.banner_lists li h3{font-size:20px}
+.nft-sell .nft-sell-blocks h4{font-size:14px}
+.nft-main .nft-banner ul.banner_lists li:first-child,.nft-main .nft-banner ul.banner_lists li:last-child{width:100%;padding:20px 0}
+.nft-main .nft-listing-main .nft-listing-head{width:100%}
+.nft-main .nft-listing-main .nft-listing-head img{object-fit:contain}
+.nft-main .exclusive_container .hpanel .float-left h3,.nft-main .nft-trending .nft-trending-head h3,.nft-main .nft-sell .nft-sell-head h3,.nft-main .nft-resources .nft-resources-head h3,.nft-main .nft-category .nft-category-head h3,.nft-main .nft-join h3{font-size:20px}
+.nft-main .float-left, .nft-main .float-right{width:100%;text-align:center}
+.nft-main .nft-resources .nft-resources-banner ul.nft-resources-list{height:auto}
+.nft-main .nft-resources .nft-resources-banner ul.nft-resources-list li:first-child,.nft-main .nft-resources .nft-resources-banner ul.nft-resources-list li:last-child{width:100%;padding:15px}
+.nft-main .nft-resources .nft-resources-banner ul.nft-resources-list li:first-child:after{display:none}
+.nft-main .nft-resources .nft-resources-banner ul.nft-resources-list li img{border-radius:20px}
+.nft-main .nft-footer .footer-details{text-align:center;margin-bottom:50px}
+
+
+/**/
+.nft-main .details-block .filter_block .float-left,.nft-main .details-block .filter_block .float-right{width:100%;text-align:center;padding-bottom:15px}
+.nft-main .nft-detail-sub .nft-detail-block{padding:40px 20px}
+.nft-main .nft-topheader{display:none}
+
+
+.nft-collection-details .nft-collection-profile ul.collection-tab-list{display:inline-block}
+.nft-collection-details .nft-collection-profile ul.collection-tab-list li{width:49%;}
+.nft-collection-details .nft-collection-profile ul.collection-tab-list li:nth-child(2){border-right:1px solid #e5e8eb}
+}
+
+@media(max-width:480px)
+{
+.nft-main .nft-detail-sub .nft-detail-block{padding:40px 10px}
+.nft-main .nft-details-section ul.details_content_list li ul.detail_content_sub li:nth-child(2){width:52%}
+.nft-main .details-block .filter_block .float-left .select_drop .form-control{width:100%}
+.nft-main .details-block .filter_block .float-left .selected_lists{margin:10px 5px 10px 5px;display:inline-block}
+.nft-main .nft-details-section{padding:0 0 0 0}
+.nft-main .details-block .filter_block .float-left .selected_lists a{margin:10px 0 10px 0;display:inline-block}
+.nft-main .nft-description-content .current-price a{margin-bottom:15px;display:block}
+.nft-main .nft-banner-right ul.nft-detail-product{text-align:center}
+.nft-main .nft-banner-right ul.nft-detail-product li{margin:10px 0}
+}

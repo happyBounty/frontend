@@ -1,0 +1,80 @@
+<div class="mainContainer">
+    <div class="app-body">
+        <main class="main d-flex align-items-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 mx-auto">
+                <div class="card-group">
+                  <div class="card">
+                    <div class="card-body p-3">
+                    <form [formGroup]="register" (ngSubmit)="onSubmit(register)">
+                        <h1>Create Account</h1>
+                        <p class="text-muted">Sign Up to your account</p>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-user"></i></span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Enter Username" formControlName="username" autocomplete="username" required>
+                        </div>
+                        <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-envelope"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enter Email" formControlName="email" required>
+                        </div>
+                        <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enter First Name" formControlName="first_name" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Enter Last Name" formControlName="last_name" required>
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-lock"></i></span>
+                          </div>
+                          <input type="password" class="form-control" placeholder="Enter Password" formControlName="password" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="icon-lock"></i></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="Enter Confirm Password" formControlName="confirm_password" required>
+                          </div>
+                        <div class="row">
+                          <div class="col-6">
+                            <button type="submit" class="btn btn-primary px-4">{{button_title}}</button>
+                          </div>
+                          <div class="col-6 text-right">
+                            <button type="button" class="btn btn-link px-0" routerLink="/login">Back to Login?</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="card-footer p-4">
+                        <div class="row">
+                          <div class="col-6">
+                            <button class="btn btn-block btn-facebook" type="button" (click)="signInWithFacebook()"><i class="fa fa-facebook"></i><span>Facebook</span></button>
+                          </div>
+                          <div class="col-6">
+                            <button class="btn btn-block btn-twitter" type="button" (click)="signInWithGoogle()"><i class="fa fa-google"></i><span>Google</span></button>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+    
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+</div>
+
+  

@@ -1,0 +1,41 @@
+<div class="topheader">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <h1>
+      <a class="navbar-brand" routerLink="/">
+        <img src="assets/images/nft-logo.png" />
+      </a>
+     </h1>
+    <button aria-controls="navbarSupportedContent" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" class="navbar-toggler" type="button" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="isCollapsed" [isAnimated]="true">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" [ngClass]="{'active': current_page == ''}">
+          <a class="nav-link" routerLink="/" href="javascript:void(0)">Home</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'active': current_page == 'marketplace'}">
+          <a class="nav-link" routerLink="/marketplace" href="javascript:void(0)">Marketplace</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'active': current_page == 'stats'}">
+          <a class="nav-link" routerLink="/stats" href="javascript:void(0)">Activity</a>
+        </li>
+        <li class="nav-item" [ngClass]="{'active': current_page == 'login'}" *ngIf="user==null">
+          <a class="nav-link" routerLink="/login" href="javascript:void(0)">Login</a>
+        </li>
+        <li class="nav-item dropdown" [ngClass]="{'active': current_page == 'login'}" *ngIf="user!=null" dropdown>
+          <a id="link-dropdown" class="nav-link dropdown-toggle" href dropdownToggle (click)="false" aria-controls="your-dropdown">
+            <img [src]="mediaBase + '/images/user/' + profile_image" class="profileImage"/>{{user.first_name}} {{user.last_name}}
+          </a>
+          <div id="your-dropdown" class="dropdown-menu" aria-labelledby="link-dropdown" *dropdownMenu>
+            <a class="dropdown-item" href="javascript:void(0)" [routerLink]="'/profile/'+user.user_id+'/collected'">My Profile</a>
+            <a class="dropdown-item" href="javascript:void(0)" [routerLink]="'/collection/mycollection'">My Collection</a>
+            <a class="dropdown-item" href="javascript:void(0)" [routerLink]="'/profile/'+user.user_id+'/favorited'">My Favourites</a>
+            <a class="dropdown-item" href="javascript:void(0)" (click)="logoutAction()">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<router-outlet></router-outlet>

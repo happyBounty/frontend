@@ -1,0 +1,171 @@
+<div class="appContainer">
+    <div class="app-body">
+        <div class="custom-sidebar fixed" #appSidebar [ngClass]="{'minmized':isToggled, 'expanded':!isToggled}">
+            <h4><i class="cil-filter leftIcon" *ngIf="!isToggled"></i><span *ngIf="!isToggled">Filter</span><i class="rightIcon" [ngClass]="{'cil-arrow-left': isToggled == false, 'cil-arrow-right': isToggled == true}" (click)="minimizeMenu()"></i></h4>
+            <div class="offerBlock SortBy" *ngIf="!isToggled">
+                <div class="animated fadeIn">
+                    <div class="card">
+                      <div class="card-header">
+                        Sort by
+                        <div class="card-header-actions">
+                          <button class="btn" (click)="isOfferCollapsed = !isOfferCollapsed">
+                            <i class="icon-arrow-down" *ngIf="!isOfferCollapsed"></i>
+                            <i class="icon-arrow-up" *ngIf="isOfferCollapsed"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body"
+                           [collapse]="isOfferCollapsed">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <button class="btn btn-block btn-outline-primary" [ngClass]="{'active':type == 'sort' && value == 'recent'}" [routerLink]="['/marketplace']" [queryParams]="{type: 'recent'}">Recent</button>
+                              </div>
+                              <div class="col-md-6">
+                                <button class="btn btn-block btn-outline-primary" [ngClass]="{'active':type == 'sort' && value == 'mostviewed'}" [routerLink]="['/marketplace']" [queryParams]="{type: 'mostviewed'}">Most Viewed</button>
+                              </div>
+                              <div class="col-md-6">
+                                <button class="btn btn-block btn-outline-primary" [ngClass]="{'active':type == 'sort' && value == 'mostliked'}" [routerLink]="['/marketplace']" [queryParams]="{type: 'mostliked'}">Most Liked</button>
+                              </div>
+                              <div class="col-md-6">
+                                <button class="btn btn-block btn-outline-primary" [ngClass]="{'active':type == 'sort' && value == 'offer'}" [routerLink]="['/marketplace']" [queryParams]="{type: 'offer'}">On Auction</button>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="offerBlock PriceFilter" *ngIf="!isToggled">
+                <div class="animated fadeIn">
+                    <div class="card">
+                      <div class="card-header">
+                        Price
+                        <div class="card-header-actions">
+                          <button class="btn" (click)="isPriceCollapsed = !isPriceCollapsed">
+                            <i class="icon-arrow-down" *ngIf="!isPriceCollapsed"></i>
+                            <i class="icon-arrow-up" *ngIf="isPriceCollapsed"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body"
+                           [collapse]="isPriceCollapsed">
+                           <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-block btn-outline-primary" [ngClass]="{'active':type == 'price' && value == '1'}" [routerLink]="['/marketplace']" [queryParams]="{price: '1'}"> < 1 ETH</button>
+                            </div>
+                            <div class="col-md-6">
+                              <button class="btn btn-block btn-outline-primary" [ngClass]="{'active':type == 'price' && value == '10'}" [routerLink]="['/marketplace']" [queryParams]="{price: '10'}">< 10 ETH</button>
+                            </div>
+                            <div class="col-md-6">
+                              <button class="btn btn-block btn-outline-primary" [ngClass]="{'active':type == 'price' && value == '100'}" [routerLink]="['/marketplace']" [queryParams]="{price: '100'}">< 100 ETH</button>
+                            </div>
+                            <div class="col-md-6">
+                              <button class="btn btn-block btn-outline-primary" [ngClass]="{'active':type == 'price' && value == '1000'}" [routerLink]="['/marketplace']" [queryParams]="{price: '1000'}">< 1000 ETH</button>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="offerBlock" *ngIf="!isToggled">
+                <div class="animated fadeIn">
+                    <div class="card">
+                      <div class="card-header">
+                        Collections
+                        <div class="card-header-actions">
+                          <button class="btn" (click)="isCollectionCollapsed = !isCollectionCollapsed">
+                            <i class="icon-arrow-down" *ngIf="!isCollectionCollapsed"></i>
+                            <i class="icon-arrow-up" *ngIf="isCollectionCollapsed"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body"
+                           [collapse]="isCollectionCollapsed">
+                           <div class="row">
+                            <div class="col-sm-12">
+                              <div>
+                                <input type="text" class="form-control" id="name" placeholder="Search" [(ngModel)]="collectionSearchInput" (keyup.enter)="searchCollectionAction()" (ngModelChange)="searchCollectionAction()" autocomplete="off">
+                              </div>
+                            </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-md-12">
+                                   <div class="collectionItem" *ngFor="let item of collections" [routerLink]="['/marketplace']" [queryParams]="{collection_id: item._id}">
+                                       <div class="collectionItemLeft">
+                                          <img [src]="mediaBase + '/images/collection/logo/' + item.image" />
+                                       </div>
+                                       <div class="collectionItemRight">
+                                          {{item.name}}
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="offerBlock" *ngIf="!isToggled">
+                <div class="animated fadeIn">
+                    <div class="card">
+                      <div class="card-header">
+                        Categories
+                        <div class="card-header-actions">
+                          <button class="btn" (click)="isCategoryCollapsed = !isCategoryCollapsed">
+                            <i class="icon-arrow-down" *ngIf="!isCategoryCollapsed"></i>
+                            <i class="icon-arrow-up" *ngIf="isCategoryCollapsed"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body"
+                           [collapse]="isCategoryCollapsed">
+                           <div class="row">
+                            <div class="col-md-12">
+                                <div class="collectionItem" *ngFor="let item of categories" (click)="categoryAction(item)" [routerLink]="['/marketplace']" [queryParams]="{category_id: item._id}">
+                                    <div class="collectionItemLeft">
+                                       <img [src]="mediaBase + '/images/categories/' + item.category_image" />
+                                    </div>
+                                    <div class="collectionItemRight">
+                                       {{item.title}}
+                                    </div>
+                                </div>
+                            </div>
+                           </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+        <main class="main fixedContainer" [ngClass]="{'minimizeContainer': isToggled == true}">
+            <div class="container-fluid">
+                <h2>{{page_title}}</h2>
+                <div class="card-body-filter">
+      
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div>
+                          <input type="text" class="form-control" id="name" placeholder="Search" [(ngModel)]="searchInput" (keyup.enter)="searchAction()">
+                        </div>
+                      </div>
+                    </div><!--/.row-->
+                    <div class="card-body-filter-action">
+                      <button type="submit" class="btn btn-primary" (click)="searchAction()"><i class="fa fa-search"></i>Search</button>
+                      <button type="submit" class="btn btn-primary" (click)="resetAction()"><i class="fa fa-refresh"></i>Reset</button>
+                    </div>
+                </div>
+                <div class="collectionMainContainer" infiniteScroll
+                [infiniteScrollDistance]="2"
+                [infiniteScrollThrottle]="50"
+                (scrolled)="onNextPage()">
+                <app-itemskeleton *ngIf="loading"></app-itemskeleton>
+                <app-nodata *ngIf="!loading && items.length==0" msg="There is no data to display here"></app-nodata>
+                <div class="row" *ngIf="!loading && items.length>0">
+                    <div class="col-md-4" *ngFor="let item of items">
+                          <app-item [item]="item" (itemEvent)="itemEvent($event)"> </app-item>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+

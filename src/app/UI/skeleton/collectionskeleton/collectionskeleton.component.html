@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-4" *ngFor="let item of collections">
+        <div class="collectionItem">
+            <div class="collectionItemImg">
+                <ngx-skeleton-loader count="1" [theme]="{ 
+                    'height': '100%',
+                    'margin-top.px': 0,
+                    'margin-bottom.px':0,
+                    'width':'100%', 
+                    'background-color': '#c3c3c3',
+                    'border-radius':0
+                    }"></ngx-skeleton-loader>
+                    <div class="collectionItemAuthor">
+                        <div class="collectionItemAuthorInner">
+                            <ngx-skeleton-loader count="1" [theme]="{ 
+                                'height.px': 64,
+                                'width.px': 64,
+                                'margin-top.px': 0,
+                                'margin-bottom.px':0,
+                                'background-color': '#c3c3c3',
+                                'border-radius':'50%'
+                                }"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="collectionItemTitle">
+                <ngx-skeleton-loader count="1" [theme]="{ 
+                    'height.px': 12,
+                    'margin-top.px': 0,
+                    'margin-bottom.px':0,
+                    'width':'70%', 
+                    'background-color': '#c3c3c3'
+                    }"></ngx-skeleton-loader> 
+            </div>
+            <div class="collectionItemCount">
+
+                <ngx-skeleton-loader count="1" [theme]="{ 
+                    'height.px': 12,
+                    'margin-top.px': 0,
+                    'margin-bottom.px':0,
+                    'width':'50%', 
+                    'background-color': '#c3c3c3'
+                    }"></ngx-skeleton-loader>
+            </div>
+        </div>
+    </div>
+</div>

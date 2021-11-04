@@ -1,0 +1,64 @@
+<div class="collectionMainContainer">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="tradeBlock">
+              <div class="animated fadeIn">
+                  <div class="card">
+                    <div class="card-header">
+                      <i class="cil-money titleIcon"></i>
+                      Offers
+                    </div>
+                    <div class="card-body historyBody">
+                        <table class="table table-bordered table-striped table-sm">
+                            <thead>
+                              <tr>
+                                <th>Item</th>
+                                <th>Sender</th>
+                                <th>Price</th>
+                                <th>Created Date</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let item of histories">
+                                <td><div class="itemDetail" [routerLink]="'/item/view/' + item.item_id._id"><img [src]="mediaBase + '/images/item/thumb/' + item.item_id.thumb"></div></td>
+                                <td><div *ngIf="item.sender != null"><a href="javascript:void(0)" [routerLink]="'/profile/' + item.sender._id">{{item.sender.first_name}} {{item.sender.last_name}}</a></div></td>
+                                <td>{{item.price}}</td>
+                                <td>{{item.created_date | amDateFormat:'LL'}}</td>
+                                <td class="action">
+                                  <div>
+                                    <div>
+                                      <button class="btn btn-sm btn-secondary" [routerLink]="'/item/view/' + item.item_id._id"><i class="icon-eye"></i></button>
+                                    </div>
+                                  </div>
+                                </td>
+
+                              </tr>
+                              <tr *ngIf="histories.length==0 && historyLoading == false">
+                                  <td colspan="4">
+                                    <alert type="info" ng-reflect-type="info">
+                                      <div role="alert" class="alert alert-info" ng-reflect-ng-class="">
+                                       <strong>Oops!</strong> No Data Found
+                                      </div>
+                                    </alert>
+                                  </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        <nav>
+                          <ul class="pagination" *ngIf="!historyLoading">
+                            <li class="page-item" *ngIf="pageHistory!=1"><a class="page-link" href="javascript:void(0)" (click)="prevHistoryPage()">Prev</a></li>
+                            <li class="page-item" *ngIf="hasNextHistoryPage"><a class="page-link" href="javascript:void(0)" (click)="nextHistoryPage()">Next</a></li>
+                          </ul>
+                          <ul class="pagination" *ngIf="historyLoading">
+                            <li class="page-item"><a class="page-link" href="javascript:void(0)">Loading...</a></li>
+                          </ul>
+                        </nav>
+                    </div>
+                  </div>
+                </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  

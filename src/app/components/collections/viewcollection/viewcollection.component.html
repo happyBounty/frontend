@@ -1,0 +1,106 @@
+<div class="appContainer">
+    <div class="collectionHeader">
+        <div class="collectionCover">
+            <img [src]="mediaBase + '/images/collection/banner/' + collection_banner" />
+        </div>
+        <div class="collectionLogo">
+            <div class="collectionLogoInner">
+                <img [src]="mediaBase+'/images/collection/logo/'+collection_logo">
+            </div>
+        </div>
+        <div class="settingsAction dropdown dropright" *ngIf="ownCollection" dropdown>
+            <button id="collectionlink-dropdown" class="btn btn-secondary" dropdownToggle aria-controls="collection-dropdown" data-offset="10,20"><i class="icon-settings"></i></button>
+            <div id="collection-dropdown" class="dropdown-menu dropdown-menu-right" aria-labelledby="collectionlink-dropdown" *dropdownMenu>
+                <a class="dropdown-item" href="javascript:void(0)" [routerLink]="'/item/add/'+collectionID">Add Item</a>
+                <a class="dropdown-item" href="javascript:void(0)" [routerLink]="'/collection/edit/'+collectionID">Edit Collection</a>
+                <a class="dropdown-item" href="javascript:void(0)" *ngIf="collectionInfo.item_count==0" (click)="confirmationModal.show()">Delete Collection</a>
+                <a class="dropdown-item" href="javascript:void(0)" [routerLink]="'/collection/activity/'+collectionID">Activity</a> 
+            </div>
+        </div>
+    </div>
+    <div class="collectionSubHeader" *ngIf="collectionInfo!=null">
+        <h2>{{collection_name}}</h2>
+        <div class="collection_stats">
+            <ul>
+                <li><span>{{collectionInfo.item_count_str}}</span><label>Items</label></li>
+                <li><span>{{collectionInfo.royalties}}%</span><label>Royalties</label></li>
+                <li><span>{{collectionInfo.volume_traded_str}}</span><label>Volume Traded</label></li>
+            </ul>
+        </div>
+        <p>{{collection_desc}}</p>
+    </div>
+    <div class="container">
+    <div class="card-body-filter">
+      
+        <div class="row">
+          <div class="col-sm-12">
+            <div>
+              <input type="text" class="form-control" id="name" placeholder="Search" [(ngModel)]="searchInput" (keyup.enter)="searchAction()">
+            </div>
+          </div>
+        </div><!--/.row-->
+        <div class="card-body-filter-action">
+          <button type="submit" class="btn btn-primary" (click)="searchAction()"><i class="fa fa-search"></i>Search</button>
+          <button type="submit" class="btn btn-primary" (click)="resetAction()"><i class="fa fa-refresh"></i>Reset</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="collectionMainContainer" infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onNextPage()">
+        <div class="container">
+            
+            <app-itemskeleton *ngIf="loading"></app-itemskeleton>
+            <app-nodata *ngIf="!loading && items.length==0" msg="There is no data to display here"></app-nodata>
+            <div class="row" *ngIf="!loading && items.length>0">
+                <div class="col-md-4" *ngFor="let item of items">
+                      <app-item [item]="item" (itemEvent)="itemEvent($event)"> </app-item>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div bsModal #confirmationModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Confirmation</h4>
+          <button type="button" class="close" (click)="confirmationModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure to delete this collection?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="confirmationModal.hide()">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="deleteAction()">Confirm</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div bsModal #confirmationItemModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Confirmation</h4>
+          <button type="button" class="close" (click)="confirmationItemModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure to delete this item?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="confirmationItemModal.hide()">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="itemDeleteAction()">Confirm</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  <app-loader *ngIf="spinner"></app-loader>
