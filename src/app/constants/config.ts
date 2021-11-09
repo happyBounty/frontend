@@ -8,7 +8,8 @@ Purpose : This is the file which contain all global constants used in the applic
 */
 export const config = {
     site_name: "Cryptotrades",
-    media_path: "https://exampleapi.com",
+    // media_path: "https://exampleapi.com",
+    media_path: "https://pulse.io",
     // base_url: "https://example.com",
     // base_url: "http://localhost:5000/api/",
     base_url: "http://pulseart.io/api",
