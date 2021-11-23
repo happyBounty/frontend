@@ -12,7 +12,7 @@ export const config = {
     media_path: "https://pulse.io",
     // base_url: "https://example.com",
     // base_url: "http://localhost:5000/api/",
-    base_url: "http://pulseart.io",
+    base_url: "https://pulseart.io",
     google_client_id:'',
     facebook_client_id:'',
     blockchain:"Rinkeby",

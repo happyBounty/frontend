@@ -9,7 +9,7 @@ Purpose : This is the file which contain all api constants used in the applicati
 export const API = {
     // base_url: "https://exampleapi.com",
     // base_url: "http://localhost:5000/api",
-    base_url: "http://pulseart.io/api",
+    base_url: "https://pulseart.io/api",
     
     user_login: "/user/login",
     user_register:"/user",
