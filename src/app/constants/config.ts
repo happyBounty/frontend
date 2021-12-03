@@ -10,10 +10,9 @@ export const config = {
     site_name: "Cryptotrades",
     // media_path: "https://exampleapi.com",
     media_path: "https://pulse.io",
-    // base_url: "https://example.com",
-    // base_url: "http://localhost:5000/api/",
     base_url: "https://pulseart.io",
-    google_client_id:'',
+    // base_url: "http://localhost:4200",
+    google_client_id:'116318305608-1dgsvgdiss1fc9h8s7po0as10sjbhvnm.apps.googleusercontent.com',
     facebook_client_id:'',
     blockchain:"Rinkeby",
     blockchain_url:"https://rinkeby.etherscan.io/"
